@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roller</title>
+    <style> body{
+            background-color: #A9C9FF;
+            background-image: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 100%);
+            height: 100vh;  }
+        .img{
+            width: 200px;
+            height: 200px;
+            display: block;
+            margin: 20px auto;}
+        .title{
+            text-align: center; }
+        .btn{
+            width: 200px;
+            display: block;
+            margin: 20px auto;
+            font-size: 25px;
+            padding: 5px 10px;
+            border: none;
+            background-color: #FFDEE9;
+            background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+            cursor: pointer;
+            border-radius: 5px; }
+        @keyframes roll {
+            0%{
+                transform: rotate(0deg);  }
+            100%{
+                transform: rotate(360deg);}}
+        .animate{
+            animation: roll 1s infinite;}
+    </style></head><body>
+    <h1 class="title">Roll The Dice</h1>
+    <img src="https://static-00.iconduck.com/assets.00/dice-1-icon-512x512-fr5yy7n7.png" alt="dice" class="img" id="dice-img"/>
+    <button class="btn" onclick="roll()">Roll Dice</button>
+    <script>
+        function roll(){ const min = 1; const max = 6;
+        const randomNumber = Math.round(Math.random() * (max - min)) + min;
+        const imgElement = document.getElementById('dice-img');
+        switch(randomNumber){
+            case 1:
+                imgElement.src = 'https://static-00.iconduck.com/assets.00/dice-1-icon-512x512-fr5yy7n7.png';
+                break; case 2:
+                imgElement.src = 'data:image/png;base64,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';
+                break;case 3:
+                imgElement.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt09zawxdfXMuoqpc2ZB4Lbel7gQyvSdi3lg&s';
+                break; case 4:
+                imgElement.src = 'https://static.thenounproject.com/png/1194702-200.png';
+                break; case 5:
+                imgElement.src = 'https://assets.streamlinehq.com/image/private/w_240,h_240,ar_1/f_auto/v1/icons/gaming/dice-5-uuh7udi0428hqbex15l0p.png/dice-5-146rip6e55qmjq7ma336i6o.png?_a=DAJFJtWIZAAC';
+                break; case 6:
+                imgElement.src = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fthenounproject.com%2Fbrowse%2Ficons%2Fterm%2Fdice-6%2F&psig=AOvVaw1HsohJeLLQ61aPe4saNqJn&ust=1740475208766000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCPCf_rv924sDFQAAAAAdAAAAABAE';
+                break; default:
+                    imgElement.src = 'default.png';  }
+        imgElement.classList.add("animate");setTimeout(()=>{
+            imgElement.classList.remove("animate");},1000)
+     }
+    </script></body></html>
